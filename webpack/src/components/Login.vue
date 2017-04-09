@@ -1,13 +1,13 @@
 <template>
   <div class="col-sm-4 col-sm-offset-4">
-    <h2>Sign Up</h2>
-    <p>Sign up for a free account to get some great quotes.</p>
+    <h2>Log In</h2>
+    <p>Log in to your account to get some great quotes.</p>
     <div class="alert alert-danger" v-if="error">
       <p>{{ error }}</p>
     </div>
     <div class="form-group">
-      <input 
-        type="text" 
+      <input
+        type="text"
         class="form-control"
         placeholder="Enter your username"
         v-model="credentials.username"
@@ -29,8 +29,7 @@
 import auth from '../auth'
 
 export default {
-
-  data() {
+  data () {
     return {
       credentials: {
         username: '',
@@ -39,17 +38,13 @@ export default {
       error: ''
     }
   },
-
   methods: {
-
-    submit() {
-
+    submit () {
       var credentials = {
         username: this.credentials.username,
         password: this.credentials.password
       }
-
-      auth.signup(this, credentials, 'secretquote')
+      auth.login(this, credentials, 'secretquote')
     }
   }
 }

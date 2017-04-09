@@ -3,7 +3,7 @@
     <h1>Get a Free Chuck Norris Quote!</h1>
     <button class="btn btn-primary" v-on:click="getQuote()">Get a Quote</button>
     <div class="quote-area" v-if="quote">
-      <h2><blockquote>{{ quote }}</blockquote></h2>      
+      <h2><blockquote>{{ quote }}</blockquote></h2>
     </div>
   </div>
 </template>
@@ -11,22 +11,19 @@
 <script>
 
 export default {
-
-  data() {
+  data () {
     return {
       quote: ''
     }
   },
-
   methods: {
-    getQuote() {
-      this.$http
-        .get('http://localhost:3000/api/random-quote', (data) => {
-          this.quote = data;
-        })
-        .error((err) => console.log(err))
+    getQuote () {
+      this.$http.get('http://localhost:3000/api/random-quote').then(response => {
+        this.quote = response.body
+      }, response => {
+        console.log(response.statusText)
+      })
     }
   }
-
 }
 </script>

@@ -5,6 +5,7 @@ import (
 
 	"github.com/markcheno/go-vue-starter/controllers"
 	"github.com/markcheno/go-vue-starter/models"
+	"github.com/rs/cors"
 
 	"github.com/auth0/go-jwt-middleware"
 	"github.com/dgrijalva/jwt-go"
@@ -37,9 +38,13 @@ func main() {
 	users, _ := models.NewUserState(db)
 	controller := controllers.NewController(db, users)
 
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"http://localhost"},
+	})
+
 	mux := mux.NewRouter()
-	mux.Handle("/", http.FileServer(http.Dir("./client/"))).Methods("GET")
-	mux.PathPrefix("/build").Handler(http.StripPrefix("/build/", http.FileServer(http.Dir("./client/build/"))))
+	mux.Handle("/", http.FileServer(http.Dir("./webpack/dist/"))).Methods("GET")
+	mux.PathPrefix("/static/js").Handler(http.StripPrefix("/static/js/", http.FileServer(http.Dir("./webpack/dist/static/js/"))))
 	mux.HandleFunc("/signup", controller.Signup).Methods("POST")
 	mux.HandleFunc("/login", controller.Login).Methods("POST")
 	mux.HandleFunc("/api/random-quote", controller.Quote).Methods("GET")
@@ -52,6 +57,7 @@ func main() {
 		negroni.Wrap(http.HandlerFunc(controller.TestProtected)),
 	))
 
+	n.Use(c)
 	n.UseHandler(mux)
 
 	n.Run(":3000")

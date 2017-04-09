@@ -22,3 +22,8 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+node_modules
+client/build
+*.db
+*.DS_Store

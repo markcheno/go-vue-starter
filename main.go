@@ -37,13 +37,6 @@ func main() {
 	users, _ := models.NewUserState(db)
 	controller := controllers.NewController(db, users)
 
-	//c := cors.New(cors.Options{
-	//	AllowedOrigins:   []string{"*"},
-	//	AllowCredentials: true,
-	//	// OptionsPassthrough: true,
-	//	// AllowedMethods: []string{"GET", "POST", "OPTIONS"},
-	//})
-
 	mux := mux.NewRouter()
 	mux.Handle("/", http.FileServer(http.Dir("./webpack/dist/"))).Methods("GET")
 	mux.PathPrefix("/static/js").Handler(http.StripPrefix("/static/js/", http.FileServer(http.Dir("./webpack/dist/static/js/"))))
@@ -59,7 +52,6 @@ func main() {
 		negroni.Wrap(http.HandlerFunc(controller.TestProtected)),
 	)).Methods("GET", "POST", "OPTIONS")
 
-	//n.Use(c)
 	n.UseHandler(mux)
 
 	n.Run(":3000")

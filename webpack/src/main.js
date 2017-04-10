@@ -19,10 +19,10 @@ import auth from './auth'
 
 function requireAuth (route, redirect, next) {
   if (!auth.user.authenticated) {
-    console.log('requireAuth: not authenticated')
+    // console.log('requireAuth: not authenticated')
     this.$router.replace('/login')
   } else {
-    console.log('requireAuth: authenticated')
+    // console.log('requireAuth: authenticated')
     next()
   }
 }

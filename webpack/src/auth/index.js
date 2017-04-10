@@ -9,14 +9,14 @@ export default {
   },
 
   login (context, creds, redirect) {
-    console.log('login: creds=', creds)
+    // console.log('login: creds=', creds)
     context.$http.post(LOGIN_URL, creds).then(response => {
-      console.log('login: response=', response)
-      console.log('login: token=', response.body.id_token)
+      // console.log('login: response=', response)
+      // console.log('login: token=', response.body.id_token)
       localStorage.setItem('id_token', response.body.id_token)
       this.user.authenticated = true
       if (redirect) {
-        console.log('login: redirecting to ', redirect)
+        // console.log('login: redirecting to ', redirect)
         context.$router.replace(redirect)
       }
     }, response => {
@@ -24,7 +24,7 @@ export default {
     })
   },
   signup (context, creds, redirect) {
-    console.log('auth: creds=', creds)
+    // console.log('auth: creds=', creds)
     context.$http.post(SIGNUP_URL, creds).then(response => {
       localStorage.setItem('id_token', response.body.id_token)
       this.user.authenticated = true
@@ -36,7 +36,7 @@ export default {
     })
   },
   logout (context) {
-    console.log('logout: logging out')
+    // console.log('logout: logging out')
     localStorage.removeItem('id_token')
     this.user.authenticated = false
     context.$router.replace('/home')

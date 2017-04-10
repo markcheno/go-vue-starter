@@ -1,0 +1,87 @@
+{
+	"ImportPath": "github.com/markcheno/go-vue-starter",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/auth0/go-jwt-middleware",
+			"Rev": "f3f7de3b9e394e3af3b88e1b9457f6f71d1ae0ac"
+		},
+		{
+			"ImportPath": "github.com/dgrijalva/jwt-go",
+			"Comment": "v3.0.0-17-g2268707",
+			"Rev": "2268707a8f0843315e2004ee4f1d021dc08baedf"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Comment": "v1.1-7-g08b5f42",
+			"Rev": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.3.0-5-g599cba5",
+			"Rev": "599cba5e7b6137d46ddf58fb1765f5d928e69604"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm",
+			"Comment": "v1.0-138-g45ccb13",
+			"Rev": "45ccb134373e7d9fa76d5987a6fed6cd5a5adfd4"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm/dialects/postgres",
+			"Comment": "v1.0-138-g45ccb13",
+			"Rev": "45ccb134373e7d9fa76d5987a6fed6cd5a5adfd4"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm/dialects/sqlite",
+			"Comment": "v1.0-138-g45ccb13",
+			"Rev": "45ccb134373e7d9fa76d5987a6fed6cd5a5adfd4"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/inflection",
+			"Rev": "1c35d901db3da928c72a72d8458480cc9ade058f"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-166-g2704adc",
+			"Rev": "2704adc878c21e1329f46f6e56a1c387d788ff94"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/hstore",
+			"Comment": "go1.0-cutoff-166-g2704adc",
+			"Rev": "2704adc878c21e1329f46f6e56a1c387d788ff94"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/oid",
+			"Comment": "go1.0-cutoff-166-g2704adc",
+			"Rev": "2704adc878c21e1329f46f6e56a1c387d788ff94"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Comment": "v1.2.0-80-gcf7286f",
+			"Rev": "cf7286f069c3ef596efcc87781a4653a2e7607bd"
+		},
+		{
+			"ImportPath": "github.com/satori/go.uuid",
+			"Comment": "v1.1.0-8-g5bf94b6",
+			"Rev": "5bf94b69c6b68ee1b541973bb8e1144db23a194b"
+		},
+		{
+			"ImportPath": "github.com/urfave/negroni",
+			"Comment": "v0.2.0-104-gc0db5fe",
+			"Rev": "c0db5feaa33826cd5117930c8f4ee5c0f565eec6"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/bcrypt",
+			"Rev": "9ef620b9ca2f82b55030ffd4f41327fa9e77a92c"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/blowfish",
+			"Rev": "9ef620b9ca2f82b55030ffd4f41327fa9e77a92c"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "d1e1b351919c6738fdeb9893d5c998b161464f0c"
+		}
+	]
+}

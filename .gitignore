@@ -9,5 +9,6 @@
 *.DS_Store
 
 # folders
+vendor
 node_modules
 tmp

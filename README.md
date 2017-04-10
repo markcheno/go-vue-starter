@@ -27,7 +27,7 @@ git clone https://github.com/markcheno/go-vue-starter
 cd go-vue-starter
 
 # install Go depenancies
-go get -u ./... 
+godep restore 
 go run server.go
 
 # open a new terminal and change to the client dir

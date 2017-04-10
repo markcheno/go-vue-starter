@@ -1,9 +1,45 @@
-package controllers
+package models
 
 import (
 	"math/rand"
-	"net/http"
+
+	"github.com/jinzhu/gorm"
+	// postgress db driver
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	// import sqlite3 driver
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
+
+// Quote struct
+type Quote struct {
+	gorm.Model
+	Text string
+}
+
+// QuoteManager struct
+type QuoteManager struct {
+	db *DB
+}
+
+// NewQuoteManager - Create a quote manager that can be used for retrieving quotes
+func NewQuoteManager(db *DB) (*QuoteManager, error) {
+
+	db.AutoMigrate(&Quote{})
+
+	quotemgr := QuoteManager{}
+
+	quotemgr.db = db
+
+	return &quotemgr, nil
+}
+
+// RandomQuote - return a random quote
+func (qm *QuoteManager) RandomQuote() *Quote {
+	quote := Quote{
+		Text: quotes[rand.Intn(len(quotes))],
+	}
+	return &quote
+}
 
 var quotes = []string{
 	"Chuck Norris doesn't call the wrong number. You answer the wrong phone.",
@@ -52,14 +88,4 @@ var quotes = []string{
 	"Chuck Norris put out a forest fire. using only gasoline",
 	"Chuck Norris CAN believe it's not butter.",
 	"Custom t-shirts provided by Spreadshirt",
-}
-
-// Quote -
-func (c *Controller) Quote(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte(quotes[rand.Intn(len(quotes))]))
-}
-
-// SecretQuote -
-func (c *Controller) SecretQuote(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte(quotes[rand.Intn(len(quotes))]))
 }

@@ -1,4 +1,4 @@
-const API_URL = '/api/'
+const API_URL = '/api/user/'
 const LOGIN_URL = API_URL + 'login'
 const SIGNUP_URL = API_URL + 'signup'
 

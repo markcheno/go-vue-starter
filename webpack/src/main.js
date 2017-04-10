@@ -13,17 +13,14 @@ Vue.use(VueResource)
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 import auth from './auth'
 
 function requireAuth (route, redirect, next) {
   if (!auth.user.authenticated) {
     console.log('requireAuth: not authenticated')
-    redirect({
-      path: '/login',
-      query: { redirect: route.fullPath }
-    })
+    this.$router.replace('/login')
   } else {
     console.log('requireAuth: authenticated')
     next()
@@ -32,8 +29,12 @@ function requireAuth (route, redirect, next) {
 
 const router = new VueRouter({
   // mode: 'history',
-  base: __dirname,
+  // base: __dirname,
   routes: [
+    {
+      path: '/',
+      component: Home
+    },
     {
       path: '/home',
       name: 'home',
@@ -45,13 +46,6 @@ const router = new VueRouter({
       component: Login
     },
     {
-      path: '/logout',
-      beforeEnter (route, redirect) {
-        auth.logout()
-        redirect('/')
-      }
-    },
-    {
       path: '/signup',
       name: 'signup',
       component: Signup
@@ -61,12 +55,6 @@ const router = new VueRouter({
       name: 'secretquote',
       component: SecretQuote,
       beforeEnter: requireAuth
-    },
-    {
-      path: '*',
-      redirect: {
-        name: 'home'
-      }
     }
   ]
 })

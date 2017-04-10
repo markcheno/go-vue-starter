@@ -1,11 +1,8 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 
-	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/gorilla/context"
 	"github.com/jinzhu/gorm"
 	"github.com/markcheno/go-vue-starter/models"
 )
@@ -32,16 +29,15 @@ var SigningKey = []byte("knrjkevdckjh")
 // TestProtected -
 func (c *Controller) TestProtected(w http.ResponseWriter, req *http.Request) {
 
-	user := c.GetUser(req)
+	//user := c.GetUser(req)
+	//u := context.Get(req, "user").(*jwt.Token).Claims.(jwt.MapClaims)
 
-	u := context.Get(req, "user").(*jwt.Token).Claims.(jwt.MapClaims)
+	w.Write([]byte("hello world"))
 
-	fmt.Fprintf(w, "This is an authenticated request\n")
-	fmt.Fprintf(w, "Claim content:\n")
-
-	fmt.Fprintf(w, "user.username: %s\n", user.Username)
-
-	for k, v := range u {
-		fmt.Fprintf(w, "%s :\t%#v\n", k, v)
-	}
+	//fmt.Fprintf(w, "This is an authenticated request\n")
+	//fmt.Fprintf(w, "Claim content:\n")
+	//fmt.Fprintf(w, "user.username: %s\n", user.Username)
+	//for k, v := range u {
+	//	fmt.Fprintf(w, "%s :\t%#v\n", k, v)
+	//}
 }

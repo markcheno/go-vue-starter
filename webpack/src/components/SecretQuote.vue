@@ -19,12 +19,13 @@ export default {
   },
   methods: {
     getQuote () {
-      this.$http.get('http://localhost:3000/api/protected/random-quote',
-        {headers: auth.getAuthHeader()}
+      this.$http.get('/api/protected/random-quote',
+        { headers: auth.getAuthHeader() }
+        // { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('id_token'), 'Access-Control-Allow-Origin': '*' } }
       ).then(response => {
         this.quote = response.body
       }, response => {
-        console.log(response.statusText)
+        console.log(response)
       })
     }
   }

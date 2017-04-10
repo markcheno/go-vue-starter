@@ -1,6 +1,4 @@
-// import router from '../router'
-
-const API_URL = 'http://localhost:3000/'
+const API_URL = '/api/'
 const LOGIN_URL = API_URL + 'login'
 const SIGNUP_URL = API_URL + 'signup'
 
@@ -17,9 +15,10 @@ export default {
       console.log('login: token=', response.body.id_token)
       localStorage.setItem('id_token', response.body.id_token)
       this.user.authenticated = true
-      // if (redirect) {
-      //   router.go(redirect)
-      // }
+      if (redirect) {
+        console.log('login: redirecting to ', redirect)
+        context.$router.replace(redirect)
+      }
     }, response => {
       context.error = response.statusText
     })
@@ -29,17 +28,18 @@ export default {
     context.$http.post(SIGNUP_URL, creds).then(response => {
       localStorage.setItem('id_token', response.body.id_token)
       this.user.authenticated = true
-      // if (redirect) {
-      //   router.go(redirect)
-      // }
+      if (redirect) {
+        context.$router.replace(redirect)
+      }
     }, response => {
       context.error = response.statusText
     })
   },
-  logout () {
-    console.log('logging out')
+  logout (context) {
+    console.log('logout: logging out')
     localStorage.removeItem('id_token')
     this.user.authenticated = false
+    context.$router.replace('/home')
   },
   checkAuth () {
     var jwt = localStorage.getItem('id_token')

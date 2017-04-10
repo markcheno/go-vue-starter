@@ -18,10 +18,10 @@ export default {
   },
   methods: {
     getQuote () {
-      this.$http.get('http://localhost:3000/api/random-quote').then(response => {
+      this.$http.get('/api/random-quote').then(response => {
         this.quote = response.body
       }, response => {
-        console.log(response.statusText)
+        console.log(response)
       })
     }
   }

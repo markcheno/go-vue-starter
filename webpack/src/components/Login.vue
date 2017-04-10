@@ -21,7 +21,7 @@
         v-model="credentials.password"
       >
     </div>
-    <button class="btn btn-primary" @click="submit()">Access</button>
+    <button class="btn btn-primary" @click="submit()">Login</button>
   </div>
 </template>
 

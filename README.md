@@ -22,12 +22,12 @@ Copyright 2017 Mark Chenoweth
 ### To get started:
 
 ``` bash
-# clone repository
-git clone https://github.com/markcheno/go-vue-starter
-cd go-vue-starter
+# clone repositordy
+go get github.com/markcheno/go-vue-starter
+cd $GOPATH/src/github.com/markcheno/go-vue-starter
 
-# install Go depenancies
-godep restore 
+# install Go depenancies (and make sure ports 3000/8080 are open)
+go get -u ./... 
 go run server.go
 
 # open a new terminal and change to the client dir

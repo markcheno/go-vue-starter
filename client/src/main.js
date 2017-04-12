@@ -17,7 +17,7 @@ Vue.config.productionTip = true
 
 import auth from './auth'
 
-function requireAuth (route, redirect, next) {
+function requireAuth (to, from, next) {
   if (!auth.isAuthenticated()) {
     this.$router.replace('/login')
   } else {

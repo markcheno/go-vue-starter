@@ -18,41 +18,35 @@ Vue.config.productionTip = true
 import auth from './auth'
 
 function requireAuth (route, redirect, next) {
-  if (!auth.user.authenticated) {
-    // console.log('requireAuth: not authenticated')
+  if (!auth.isAuthenticated()) {
     this.$router.replace('/login')
   } else {
-    // console.log('requireAuth: authenticated')
     next()
   }
 }
 
 const router = new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   // base: __dirname,
   routes: [
     {
       path: '/',
-      component: Home,
-      beforeEnter: auth.checkAuth()
+      component: Home
     },
     {
       path: '/home',
       name: 'home',
-      component: Home,
-      beforeEnter: auth.checkAuth()
+      component: Home
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
-      beforeEnter: auth.checkAuth()
+      component: Login
     },
     {
       path: '/signup',
       name: 'signup',
-      component: Signup,
-      beforeEnter: auth.checkAuth()
+      component: Signup
     },
     {
       path: '/secretquote',

@@ -39,14 +39,6 @@ export default {
     return false
   },
 
-  requireAuth (context, route, redirect, next) {
-    if (!this.isAuthenticated()) {
-      context.$router.replace('/login')
-    } else {
-      next()
-    }
-  },
-
   getAuthHeader () {
     return {
       'Authorization': 'Bearer ' + localStorage.getItem('id_token')

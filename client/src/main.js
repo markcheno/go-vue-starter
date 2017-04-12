@@ -33,22 +33,26 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      beforeEnter: auth.checkAuth()
     },
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: auth.checkAuth()
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      beforeEnter: auth.checkAuth()
     },
     {
       path: '/signup',
       name: 'signup',
-      component: Signup
+      component: Signup,
+      beforeEnter: auth.checkAuth()
     },
     {
       path: '/secretquote',

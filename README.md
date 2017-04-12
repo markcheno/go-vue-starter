@@ -19,6 +19,15 @@ Copyright 2017 Mark Chenoweth
 
 - User management
 
+### TODO:
+- config from file
+
+- email confirmation
+
+- logrus
+
+- letsencrypt tls
+
 ### To get started:
 
 ``` bash

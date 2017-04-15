@@ -12,10 +12,10 @@ import (
 
 // User struct
 type User struct {
-	gorm.Model
-	Username string `gorm:"not null;unique"`
-	Password string `gorm:"not null"`
-	UUID     string `gorm:"not null;unique"`
+	gorm.Model `json:"-"`
+	Username   string `gorm:"not null;unique" json:"username"`
+	Password   string `gorm:"not null" json:"-"`
+	UUID       string `gorm:"not null;unique" json:"uuid"`
 }
 
 // UserManager struct

@@ -1,7 +1,6 @@
 <template>
   <div class="col-sm-4 col-sm-offset-4">
     <h2>Sign Up</h2>
-    <p>Sign up for a free account to get some great quotes.</p>
     <div class="alert alert-danger" v-if="error">
       <p>{{ error }}</p>
     </div>

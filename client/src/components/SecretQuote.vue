@@ -23,6 +23,9 @@ export default {
       .then(response => {
         this.quote = response.body
       }, response => {
+        if (response.status === 401) {
+          auth.logout(this)
+        }
         console.log(response)
       })
     }

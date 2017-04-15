@@ -80,7 +80,7 @@ func (api *API) GetUserFromContext(req *http.Request) *models.User {
 func (api *API) UserInfo(w http.ResponseWriter, req *http.Request) {
 
 	user := api.GetUserFromContext(req)
-
-	w.Write([]byte("This is an authenticated request\n"))
-	w.Write([]byte("username: " + user.Username + "\n"))
+	js, _ := json.Marshal(user)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }

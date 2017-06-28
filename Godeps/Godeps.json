@@ -13,11 +13,6 @@
 			"Rev": "2268707a8f0843315e2004ee4f1d021dc08baedf"
 		},
 		{
-			"ImportPath": "github.com/gorilla/context",
-			"Comment": "v1.1-7-g08b5f42",
-			"Rev": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
-		},
-		{
 			"ImportPath": "github.com/gorilla/mux",
 			"Comment": "v1.3.0-5-g599cba5",
 			"Rev": "599cba5e7b6137d46ddf58fb1765f5d928e69604"

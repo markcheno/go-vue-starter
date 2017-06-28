@@ -6,7 +6,6 @@ import (
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware"
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/gorilla/context"
 	"github.com/markcheno/go-vue-starter/models"
 )
 
@@ -42,6 +41,7 @@ func GetJSONToken(user *models.User) string {
 
 // GetUserClaimsFromContext return "user" claims as a map from request
 func GetUserClaimsFromContext(req *http.Request) map[string]interface{} {
-	claims := context.Get(req, "user").(*jwt.Token).Claims.(jwt.MapClaims)
+	//claims := context.Get(req, "user").(*jwt.Token).Claims.(jwt.MapClaims)
+	claims := req.Context().Value("user").(*jwt.Token).Claims.(jwt.MapClaims)
 	return claims
 }

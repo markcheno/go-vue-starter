@@ -31,11 +31,11 @@ Copyright 2017 Mark Chenoweth
 ### To get started:
 
 ``` bash
-# clone repositordy
+# clone repository
 go get github.com/markcheno/go-vue-starter
 cd $GOPATH/src/github.com/markcheno/go-vue-starter
 
-# install Go depenancies (and make sure ports 3000/8080 are open)
+# install Go dependencies (and make sure ports 3000/8080 are open)
 go get -u ./... 
 go run server.go
 

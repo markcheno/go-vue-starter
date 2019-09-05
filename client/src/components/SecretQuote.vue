@@ -3,7 +3,9 @@
     <h1>Get a secret quote!</h1>
     <button class="btn btn-warning" v-on:click="getQuote()">Get a Quote</button>
     <div class="quote-area" v-if="quote">
-      <h2><blockquote>{{ quote }}</blockquote></h2>
+      <h2>
+        <blockquote>{{ quote }}</blockquote>
+      </h2>
     </div>
   </div>
 </template>
@@ -19,15 +21,19 @@ export default {
   },
   methods: {
     getQuote () {
-      this.$http.get('/api/quote/protected/random', {headers: auth.getAuthHeader()})
-      .then(response => {
-        this.quote = response.body
-      }, response => {
-        if (response.status === 401) {
-          auth.logout(this)
-        }
-        console.log(response)
-      })
+      this.$http
+        .get('/api/quote/protected/random', { headers: auth.getAuthHeader() })
+        .then(
+          response => {
+            this.quote = response.body
+          },
+          response => {
+            if (response.status === 401) {
+              auth.logout(this)
+            }
+            console.log(response)
+          }
+        )
     }
   }
 }
